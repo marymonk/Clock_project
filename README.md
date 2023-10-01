@@ -12,3 +12,6 @@
 1)Собрать схему устройства.  
 2)Написать программное обеспечение.  
 3)Провести тестирование устройства.  
+
+**Примеры:**  
+(https://portal-pk.ru/news/198-svetodiodnye-chasy-svoimi-rukami-na-arduino-arduino-ws2312.html)
