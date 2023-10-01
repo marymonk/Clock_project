@@ -14,5 +14,5 @@
 3)Провести тестирование устройства.  
 
 **Примеры:**  
-(https://portal-pk.ru/news/198-svetodiodnye-chasy-svoimi-rukami-na-arduino-arduino-ws2312.html)-пример часов 
+(https://youtu.be/YaVI-hoEDWQ?si=EsOMcYM9fmXu4K3c)-пример часов  
 (https://youtu.be/3HmYOPGCU5E?si=OX2z7LKPz1zsA1fC)-модуль рельного времени DS1302
