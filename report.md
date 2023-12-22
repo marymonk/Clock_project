@@ -11,7 +11,7 @@
 
 ## Описание работы приложения
 ### Код программы для Arduino
-#include <TM1637Display.h>
+'#include <TM1637Display.h>
 #include <Ds1302.h>
 
 
@@ -55,7 +55,7 @@ void loop() {
 
   display.showNumberDecEx(hours * 100 + minutes, 0b11100000, true);
   delay(1000);  
-}
+}'
 
 # Описание работы кода
 1. В функции setup происходит инициализация модуля DS1302 и установка начального времени.
