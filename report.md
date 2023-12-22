@@ -63,7 +63,7 @@ void loop() {
 2. В функции loop происходит постоянное считывание текущего времени с модуля DS1302 и отображение его на модуле TM1637 с задержкой в 1 секунду.
 
 ## Схема сборки 
-![Image](https://github.com/marymonk/Clock_project/rawmaster/Clock_project/image.png)
+![Image](https://github.com/marymonk/Clock_project/raw/Clock_project/image.png)
 ## Фотография работающего проекта
 
 ## Полученные навыки
