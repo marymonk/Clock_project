@@ -13,50 +13,51 @@
 ### Код программы для Arduino
 ```c
 #include <TM1637Display.h>
-#include <Ds1302.h>
+#include <DS1302.h>
 
 
-#define CLK_PIN 2    
-#define DIO_PIN 3    
+const int CLK_PIN = A2;
+const int DIO_PIN = A3;
 TM1637Display display(CLK_PIN, DIO_PIN);
+DS1302 rtc(4, 5, 6);
 
 
-#define RST_PIN 4    
-#define DAT_PIN 5  
-#define CLK_PIN 6  
-Ds1302 rtc(RST_PIN, DAT_PIN, CLK_PIN);
-
-
-void setup(){
+void setup() {
   Serial.begin(9600);
-  rtc.init();
-  Ds1302::DateTime dt = {
-      .year = 23,
-      .month = Ds1302::MONTH_DEC,
-      .day = 10,
-      .hour = 13,
-      .minute = 00,
-      .second = 00,
-      .dow = Ds1302::DOW_SUN
-      };
+  rtc.begin();
+
+
+  if (rtc.chipPresent()) {
+    Serial.println("DS1302 is present!");
+  } else {
+    Serial.println("Couldn't find DS1302");
+    while (1);
+  }
+
+
+  if (rtc.haltFlag()) {
+    rtc.clearHaltFlag();
+    Serial.println("DS1302 was halted, cleared halt flag");
+  }
+
+
+  rtc.writeProtect(false); // Отключение защиты записи
   display.setBrightness(0x0a);
 }
 
 
-
-
 void loop() {
-  Ds1302::DateTime now;
-  rtc.getDateTime(&now);
-
-
-  int hours = now.hour;
-  int minutes = now.minute;
-
-
-  display.showNumberDecEx(hours * 100 + minutes, 0b11100000, true);
-  delay(1000);  
+  Time t = rtc.time();
+  int hour = t.hr;
+  int minute = t.min;
+  Serial.print("Time: ");
+  Serial.print(hour);
+  Serial.print(":");
+  Serial.println(minute);
+  display.showNumberDec(hour * 100 + minute, true);
+  delay(1000);
 }
+
 ```
 # Описание работы кода
 1. В функции setup происходит инициализация модуля DS1302 и установка начального времени.
